@@ -26,39 +26,39 @@ Type "help", "copyright", "credits" or "license()" for more information.
 ...         lbl_comm_status.config(text="COMMENTS: ON", fg="green")
 ...         for c in reversed(WBWData.comments_list):
 ...             comment_display.insert(tk.END, f" 💬 {c}")
-    else:
-        lbl_comm_status.config(text="COMMENTS: OFF", fg="red")
-        comment_display.insert(tk.END, " [Comments have been disabled by Admin]")
-
-        
-def handle_vote(vote_type):
-    """Quietly updates votes and locks buttons."""
-    if WBWData.has_voted:
-        return 
-    if vote_type == "like":
-        WBWData.likes += 1
-        lbl_likes.config(text=f"👍 {WBWData.likes}")
-    else:
-        WBWData.dislikes += 1
-        lbl_dislikes.config(text=f"👎 {WBWData.dislikes}")
-    
-    WBWData.has_voted = True
-    btn_lk.config(state="disabled")
-    btn_dk.config(state="disabled")
-
-    
-def admin_login():
-    """Access with password: jskhokhar28"""
-    secret = simpledialog.askstring("WBW Admin", "Password:", show='*')
-    if secret == "jskhokhar28":
-        admin_panel.pack(pady=10)
-        btn_login.pack_forget()
-
-        
-def exit_admin():
-    """Closes Admin Panel and returns to user view."""
-    admin_panel.pack_forget()
-    btn_login.pack(side="bottom", pady=10)
+...     else:
+...         lbl_comm_status.config(text="COMMENTS: OFF", fg="red")
+...         comment_display.insert(tk.END, " [Comments have been disabled by Admin]")
+... 
+...         
+>>> def handle_vote(vote_type):
+...     """Quietly updates votes and locks buttons."""
+...     if WBWData.has_voted:
+...         return 
+...     if vote_type == "like":
+...         WBWData.likes += 1
+...         lbl_likes.config(text=f"👍 {WBWData.likes}")
+...     else:
+...         WBWData.dislikes += 1
+...         lbl_dislikes.config(text=f"👎 {WBWData.dislikes}")
+...     
+...     WBWData.has_voted = True
+...     btn_lk.config(state="disabled")
+...     btn_dk.config(state="disabled")
+... 
+...     
+>>> def admin_login():
+...     """Access with password: jskhokhar28"""
+...     secret = simpledialog.askstring("WBW Admin", "Password:", show='*')
+...     if secret == "jskhokhar28":
+...         admin_panel.pack(pady=10)
+...         btn_login.pack_forget()
+... 
+...         
+>>> def exit_admin():
+...     """Closes Admin Panel and returns to user view."""
+...     admin_panel.pack_forget()
+...     btn_login.pack(side="bottom", pady=10)
 
     
 def post_news():
